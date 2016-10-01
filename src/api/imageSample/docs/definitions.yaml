@@ -1,0 +1,51 @@
+definitions:
+
+  ImageSample:
+    allOf:
+      - "$ref": "#/definitions/ImageSampleModel"
+      - properties:
+          _id:
+            type: string
+
+  ImageSampleModel:
+    type: object
+    properties:
+      name:
+        type: string
+      info:
+        type: string
+      active:
+        type: boolean
+      image:
+        "$ref": "#/definitions/ImageSampleImage"
+      images:
+        type: array
+        items:
+          "$ref": "#/definitions/ImageSampleImage"
+
+  ImageSampleImage:
+    type: object
+    properties:
+      thumbnail:
+        "$ref": "#/definitions/ImageInfo"
+      small:
+        "$ref": "#/definitions/ImageInfo"
+      medium:
+        "$ref": "#/definitions/ImageInfo"
+      original:
+        "$ref": "#/definitions/ImageInfo"
+
+  ImageSamples:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/ImageSample"
+      - "$ref": "#/definitions/PaginateResult"
+
+  ImageSamplesFilters:
+    type: object
+    properties:
+      active:
+        type: boolean

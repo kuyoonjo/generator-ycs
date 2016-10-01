@@ -1,0 +1,49 @@
+definitions:
+
+  User:
+    allOf:
+      - "$ref": "#/definitions/UserModel"
+      - properties:
+          _id:
+            type: string
+
+  UserModel:
+    allOf:
+      - "$ref": "#/definitions/AuthModel"
+      - properties:
+          name:
+            type: string
+          info:
+            type: string
+          active:
+            type: boolean
+  Users:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/User"
+      - "$ref": "#/definitions/PaginateResult"
+      
+
+  UsersFilters:
+    type: object
+    properties:
+      active:
+        type: boolean
+
+  UserCreationFrom:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+
+  UserModificationFrom:
+    allOf:
+      - "$ref": "#/definitions/UserModel"
+      - properties:
+          password:
+            type: string

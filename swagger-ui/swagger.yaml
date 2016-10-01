@@ -1,0 +1,892 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: 核心运动 API
+  description: 服务器公用APIs.
+  version: "1.0.0"
+# the domain of the service
+host: localhost:9000
+# array of all schemes that your API supports
+schemes:
+  - http
+  
+# Auth
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+paths:
+  /auth/local/:
+    post:
+      summary: Login API
+      description: |
+        Get JWT token by given email and password.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          in: formData
+          type: string
+          required: true
+        - name: password
+          in: formData
+          type: string
+          required: true
+      tags:
+        - Auth
+      responses:
+        200:
+          description: A jwt is returned
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        401:
+          description: Fails
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        
+  /api/thumbnails/{id}:
+    get:
+      summary: Get a thumbnail.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Thumbnails
+        - Files
+        - Images
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: A thumbnail represented by base64 string.
+          schema:
+            "$ref": "#/definitions/Thumbnail"
+        304:
+          description: A thumbnail represented by base64 string.
+          schema:
+            "$ref": "#/definitions/Thumbnail"
+      
+  /api/categories/:
+    get:
+      summary: List of categories
+      description: |
+        All available categories.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Categories
+      responses:
+        200:
+          description: A list of category objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Category"
+        304:
+          description: A list of category objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Category"
+    post:
+      summary: Creat a new category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Categories
+      security:
+        - Bearer: []
+      parameters:
+        - name: category
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              order:
+                type: integer
+              thumbnail:
+                $ref: '#/definitions/Thumbnail'
+      
+      responses:
+        201:
+          description: A category has been created
+          schema:
+            "$ref": "#/definitions/Category"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+    patch:
+      summary: Re-order the categories
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Categories
+      security:
+        - Bearer: []
+      parameters:
+        - name: category
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                _id:
+                  type: string
+                order:
+                  type: integer
+      
+      responses:
+        200:
+          description: Categories have been reorderred
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Category"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+            
+  /api/categories/{id}:
+    get:
+      summary: Gets a specific category by a given id.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: A category object
+          schema:
+            "$ref": "#/definitions/Category"
+        304:
+          description: A category object
+          schema:
+            "$ref": "#/definitions/Category"
+
+    put:
+      summary: Modifies a category.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - Categories
+      security:
+        - Bearer: []
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: category
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              order:
+                type: integer
+              thumbnail:
+                $ref: '#/definitions/Thumbnail'
+      responses:
+        200:
+          description: A category has been modified.
+          schema:
+            "$ref": "#/definitions/Category"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+            
+    delete:
+      summary: Delete a category
+      tags: 
+        - Other
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        204:
+          description: A category has been deleted.
+        401:
+          description: Unauthorized
+        
+  /api/cities/:
+    get:
+      summary: List of cities
+      description: |
+        All available cities.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - City
+      responses:
+        200:
+          description: A list of city objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/City"
+        304:
+          description: A list of city objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/City"
+    post:
+      summary: Creat a new city
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - City
+      security:
+        - Bearer: []
+      parameters:
+        - name: city
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+      responses:
+        201:
+          description: A city has been created
+          schema:
+            "$ref": "#/definitions/City"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+  
+  /api/cities/{id}:
+    get:
+      summary: Gets a specific city by a given id.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - City
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: A city object
+          schema:
+            "$ref": "#/definitions/City"
+        304:
+          description: A city object
+          schema:
+            "$ref": "#/definitions/City"
+
+    put:
+      summary: Modifies a city.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - City
+      security:
+        - Bearer: []
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: city
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+      responses:
+        200:
+          description: A city has been modified.
+          schema:
+            "$ref": "#/definitions/City"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+            
+    delete:
+      summary: Delete a city
+      tags: 
+        - Other
+        - City
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        204:
+          description: A city has been deleted.
+        401:
+          description: Unauthorized
+          
+  /api/counties/:
+    get:
+      summary: List of counties
+      description: |
+        All available counties.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - County
+      parameters:
+        - name: _filters
+          in: query
+          description: 'A JSON string. e.g. {"city_id": "xxx"}'
+          required: false
+          type: string
+      responses:
+        200:
+          description: A list of county objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/County"
+        304:
+          description: A list of county objects
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/County"
+    post:
+      summary: Creat a new county
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - County
+      security:
+        - Bearer: []
+      parameters:
+        - name: county
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              city_id:
+                type: string
+      responses:
+        201:
+          description: A county has been created
+          schema:
+            "$ref": "#/definitions/County"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+  
+  /api/counties/{id}:
+    get:
+      summary: Gets a specific county by a given id.
+      produces:
+        - application/json
+      tags:
+        - Others
+        - County
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: A county object
+          schema:
+            "$ref": "#/definitions/County"
+        304:
+          description: A county object
+          schema:
+            "$ref": "#/definitions/County"
+
+    put:
+      summary: Modifies a county.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - Others
+        - County
+      security:
+        - Bearer: []
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: county
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              city_id:
+                type: string
+      responses:
+        200:
+          description: A county has been modified.
+          schema:
+            "$ref": "#/definitions/County"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+            
+    delete:
+      summary: Delete a county
+      tags: 
+        - Other
+        - County
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        204:
+          description: A county has been deleted.
+        401:
+          description: Unauthorized
+      
+  /venues/:
+    get:
+      summary: An array of venues
+      description: |
+        List venues with basic info.
+      produces:
+        - application/json
+      parameters:
+        - name: _page
+          in: query
+          description: Current page index.
+          required: false
+          type: integer
+        - name: _limit
+          in: query
+          description: The maximum number of items per page.
+          required: false
+          type: integer
+        - name: _sort
+          in: query
+          description: Item for sorting.
+          required: false
+          type: string
+        - name: _sortDir
+          in: query
+          description: DESC | ASC (default)
+          required: false
+          type: string
+      tags:
+        - Venue
+      responses:
+        200:
+          description: A list of venue objects with basic info.
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Venue"
+        304:
+          description: A list of venue objects with basic info.
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Venue"
+              
+    post:
+      summary: Create a venue
+      description: |
+        Create a venue.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: venue
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              discription:
+                type: string
+              category_id:
+                type: string
+              contacts:
+                type: object
+                properties:
+                  phone:
+                    type: string
+              location:
+                type: object
+                properties:
+                  county_id:
+                    type: string
+                  address:
+                    type: string
+                  geolocation:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+      tags:
+        - Venue
+      security:
+        - Bearer: []
+      responses:
+        201:
+          description: Successful created.
+          schema:
+            "$ref": "#/definitions/Venue"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+
+  /venues/{id}:
+    get:
+      summary: Get a venue
+      description: |
+        Get a venue with its basic info.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      tags:
+        - Venue
+      responses:
+        200:
+          description: A venue object
+          schema:
+            "$ref": "#/definitions/Venue"
+        304:
+          description: A venue object
+          schema:
+            $ref: '#/definitions/Venue'
+            
+    put:
+      summary: Modifies a venue
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: venue
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              discription:
+                type: string
+              category_id:
+                type: string
+              contacts:
+                type: object
+                properties:
+                  phone:
+                    type: string
+              location:
+                type: object
+                properties:
+                  county_id:
+                    type: string
+                  address:
+                    type: string
+                  geolocation:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+      tags:
+        - Venue
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: A venue object
+          schema:
+            "$ref": "#/definitions/Venue"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+            
+  /venues/{id}/pictures/:
+    get:
+      summary: Venue pictures
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      tags:
+        - Venue
+      responses:
+        200:
+          description: Venue pictures
+          schema:
+            type: object
+            properties:
+              thumbnail_id:
+                type: string
+              pictures:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    order:
+                      type: number
+                    picture:
+                      $ref: '#/definitions/Picture'
+        304:
+          description: Venue pictures
+          schema:
+            type: object
+            properties:
+              thumbnail_id:
+                type: string
+              pictures:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    order:
+                      type: number
+                    picture:
+                      $ref: '#/definitions/Picture'
+                      
+    post:
+      summary: Upload a picture
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: files
+          in: formData
+          required: true
+          type: file
+      tags:
+        - Venue
+      security:
+        - Bearer: []
+      responses:
+        201:
+          description: Successful created.
+          schema:
+            "$ref": "#/definitions/Picture"
+        401:
+          description: Unauthorized
+          schema:
+            type: string
+    
+      
+            
+  
+
+definitions:
+  Thumbnail:
+    type: object
+    properties:
+      _id:
+        type: string
+      filesize:
+        type: integer
+      filetype:
+        type: string
+      filename:
+        type: string
+      base64:
+        type: string
+        
+  Category:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+        description: The name of the category.
+      order:
+        type: integer
+      thumbnail_id:
+        type: string
+        
+  Venue:
+    type: object
+    properties:
+      _id:
+        type: string
+        description: Unique identifier representing a specific venue.
+      name:
+        type: string
+      description:
+        type: string
+      category_id:
+        type: string
+      location:
+        type: object
+        properties:
+          county_id:
+            type: string
+          address:
+            type: string
+          geolocation:
+            type: object
+            properties:
+              latitude:
+                type: number
+              longitude:
+                type: number
+      pictures:
+        type: object
+        properties:
+          thumbnail_url: 
+            type: string
+          pictures: 
+            type: array
+            items: 
+              type: object
+              properties:
+                order:
+                  type: number
+                picture:
+                  $ref: '#/definitions/Picture'
+      contacts:
+        type: object
+        properties:
+          phone:
+            type: string
+
+
+  Picture:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Picture name.
+      url:
+        type: string
+        description: Picture URL.
+        
+  Price:
+    type: object
+    properties:
+      original:
+        type: number
+        description: Original price.
+      current:
+        type: number
+        description: Current price.
+        
+  City:
+    type: object
+    properties:
+      _id:
+        type: string
+        description: Unique identifier representing a specific city.
+      name:
+        type: string
+        description: The name of the city.
+        
+  County:
+    type: object
+    properties:
+      _id:
+        type: string
+        description: Unique identifier representing a specific county.
+      name:
+        type: string
+        description: The name of the county.
+      city_id:
+        type: string
+        description: The id of the city which the county is in.
+      
+        

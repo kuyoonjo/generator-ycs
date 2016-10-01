@@ -1,0 +1,114 @@
+paths:
+
+# Sign In
+  /api/auth/local/:
+    post:
+      summary: Sign in with username and password
+      produces:
+        - application/json
+      tags:
+        - Auth
+      parameters:
+        - name: json
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthForm"
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+# Sign Up
+  /api/auth/local/signup:
+    post:
+      summary: Sign up with username and password
+      produces:
+        - application/json
+      tags:
+        - Auth
+      parameters:
+        - name: json
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthForm"
+            
+      responses:
+        201:
+          description: Success
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+# Reset Password
+  /api/auth/local/reset:
+    post:
+      summary: Reset Password
+      produces:
+        - application/json
+      tags:
+        - Auth
+      security:
+        - Bearer: []
+      parameters:
+        - name: json
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/PasswordResetForm"
+      responses:
+        205:
+          description: Success
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+# Mobile Wechat
+  /api/auth/mobile/wechat:
+    post:
+      summary: Oauth2 with wechat mobile
+      produces:
+        - application/json
+      tags:
+        - Auth
+      parameters:
+        - name: json
+          in: body
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthMobileWechatForm"
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        201:
+          description: Success
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"

@@ -1,0 +1,151 @@
+paths:
+
+  /api/samples:
+  # index
+    get:
+      summary: List all Samples
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: _options
+          in: query
+          schema:
+            "$ref": "#/definitions/PaginateOptions"
+        - name: _filters
+          in: query
+          schema:
+            "$ref": "#/definitions/SamplesFilters"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Samples"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # create
+    post:
+      summary: Create a new Sample
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/SampleModel"
+      responses:
+        201:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Sample"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  /api/samples/{id}:
+  # show
+    get:
+      summary: Find a Sample by ID
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Sample"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # update
+    put:
+      summary: Modify a Sample
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/SampleModel"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Sample"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # updatePartial
+    patch:
+      summary: Modify a Sample partially
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/SampleModel"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Sample"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # remove
+    delete:
+      summary: Remove a Sample by ID
+      produces:
+        - application/json
+      tags:
+        - Sample
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        204:
+          description: Success
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"

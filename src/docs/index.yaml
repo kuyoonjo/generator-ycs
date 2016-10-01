@@ -1,0 +1,25 @@
+swagger: '2.0'
+info:
+  title: Restful API Documentation
+  description: by Yu Chen.
+  version: "1.0.0"
+
+# the domain of the service
+host: localhost:9000
+
+# array of all schemes that your API supports
+schemes:
+  - http
+
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+
+# Auth
+securityDefinitions:
+  Bearer:
+    description: Authorization header using the Bearer schema. More info at [https://jwt.io/introduction/](https://jwt.io/introduction/)
+    type: apiKey
+    name: Authorization
+    in: header

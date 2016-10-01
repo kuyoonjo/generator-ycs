@@ -1,0 +1,51 @@
+definitions:
+
+  Auth:
+    allOf:
+      - "$ref": "#/definitions/AuthModel"
+      - properties:
+          _id:
+            type: string
+
+  AuthModel:
+    type: object
+    properties:
+      username:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+      providers:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            openid:
+              type: string
+
+  AuthForm:
+    type: object
+    properties:
+      username: 
+        type: string
+      password: 
+        type: string
+
+  PasswordResetForm:
+    type: object
+    properties:
+      oldPassword: 
+        type: string
+      newPassword: 
+        type: string
+
+  AuthMobileWechatForm:
+    type: object
+    properties:
+      access_token:
+        type: string
+      openid:
+        type: string
