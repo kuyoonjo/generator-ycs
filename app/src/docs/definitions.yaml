@@ -1,0 +1,90 @@
+definitions:
+
+# errors
+  Error:
+    type: object
+    properties:
+      name:
+        type: string
+      message:
+        type: string
+      errors:
+        type: object
+
+# paginate options
+  PaginateOptions:
+    description: More info at [https://www.npmjs.com/package/mongoose-paginate](https://www.npmjs.com/package/mongoose-paginate)
+    type: object
+    properties:
+      page:
+        type: number
+      limit:
+        type: number
+      sort:
+        type: string
+      select:
+        type: string
+      populate:
+        type: string
+      lean:
+        type: boolean
+      leanWithId:
+        type: boolean
+      offset:
+        type: number
+
+  PaginateResult:
+    type: object
+    required:
+      - docs
+      - total
+      - limit
+    properties:
+      total:
+        type: number
+      limit:
+        type: number
+      page:
+        type: number
+      pages:
+        type: number
+      prev:
+        type: number
+      next:
+        type: number
+      offset:
+        type: number
+
+# File infos
+  FileInfo:
+    type: object
+    properties:
+      url:
+        type: string
+      type:
+        type: string
+      name:
+        type: string
+      size:
+        type: number
+
+# Image infos
+  ImageInfo:
+    type: object
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      url:
+        type: string
+      size:
+        type: number
+      height:
+        type: number
+      width:
+        type: number
+      depth:
+        type: number
+      format:
+        type: string

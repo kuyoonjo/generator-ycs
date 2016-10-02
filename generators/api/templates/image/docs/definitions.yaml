@@ -1,0 +1,51 @@
+definitions:
+
+  <%= className %>:
+    allOf:
+      - "$ref": "#/definitions/<%= className %>Model"
+      - properties:
+          _id:
+            type: string
+
+  <%= className %>Model:
+    type: object
+    properties:
+      name:
+        type: string
+      info:
+        type: string
+      active:
+        type: boolean
+      image:
+        "$ref": "#/definitions/<%= className %>Image"
+      images:
+        type: array
+        items:
+          "$ref": "#/definitions/<%= className %>Image"
+
+  <%= className %>Image:
+    type: object
+    properties:
+      thumbnail:
+        "$ref": "#/definitions/ImageInfo"
+      small:
+        "$ref": "#/definitions/ImageInfo"
+      medium:
+        "$ref": "#/definitions/ImageInfo"
+      original:
+        "$ref": "#/definitions/ImageInfo"
+
+  <%= classNamePlural %>:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/<%= className %>"
+      - "$ref": "#/definitions/PaginateResult"
+
+  <%= classNamePlural %>Filters:
+    type: object
+    properties:
+      active:
+        type: boolean

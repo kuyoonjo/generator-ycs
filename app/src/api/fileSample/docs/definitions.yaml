@@ -1,0 +1,39 @@
+definitions:
+
+  FileSample:
+    allOf:
+      - "$ref": "#/definitions/FileSampleModel"
+      - properties:
+          _id:
+            type: string
+
+  FileSampleModel:
+    type: object
+    properties:
+      name:
+        type: string
+      info:
+        type: string
+      active:
+        type: boolean
+      file:
+        "$ref": "#/definitions/FileInfo"
+      files:
+        type: array
+        items:
+          "$ref": "#/definitions/FileInfo"
+
+  FileSamples:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/FileSample"
+      - "$ref": "#/definitions/PaginateResult"
+
+  FileSamplesFilters:
+    type: object
+    properties:
+      active:
+        type: boolean

@@ -1,0 +1,33 @@
+definitions:
+
+  <%= className %>:
+    allOf:
+      - "$ref": "#/definitions/<%= className %>Model"
+      - properties:
+          _id:
+            type: string
+
+  <%= className %>Model:
+    type: object
+    properties:
+      name:
+        type: string
+      info:
+        type: string
+      active:
+        type: boolean
+
+  <%= classNamePlural %>:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/<%= className %>"
+      - "$ref": "#/definitions/PaginateResult"
+
+  <%= classNamePlural %>Filters:
+    type: object
+    properties:
+      active:
+        type: boolean
