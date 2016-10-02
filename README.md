@@ -4,7 +4,7 @@
 ## Dependencies
 
 - [MongoDB](https://www.mongodb.com)
-- [GraphicsMagick](http://www.graphicsmagick.org)
+- [GraphicsMagick](http://www.graphicsmagick.org) *(optional)*
 
 ## Installation
 
@@ -18,8 +18,27 @@ npm install -g generator-ycs
 Then generate your new project:
 
 ```bash
-yo ycs
+yo ycs [appName]
 ```
+
+## Commands
+
+- [Initialize App](#initialize-app)
+- [Add API](#add-api)
+
+## Initialize App
+
+```bash
+yo ycs [appName]
+```
+
+## Add API
+
+```bash
+yo ycs:api [apiName] [endpoint=/xxx/xxx] [--file] [--image]
+```
+
+
 
 ## Getting To Know Yeoman
 
