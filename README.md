@@ -1,6 +1,11 @@
 # generator-ycs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > An Express Restful API Server
 
+## Dependencies
+
+- [MongoDB](https://www.mongodb.com)
+- [GraphicsMagick](http://www.graphicsmagick.org)
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-ycs using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
