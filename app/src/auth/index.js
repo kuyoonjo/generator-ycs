@@ -1,7 +1,7 @@
 'use strict'
 
 import {Router} from 'express'
-import Auth from './model'
+import Auth from '../api/user/model'
 
 // Passport Configuration
 require('./local/passport').setup(Auth)

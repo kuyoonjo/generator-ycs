@@ -6,7 +6,7 @@ import config from '../config'
 import jwt from 'jsonwebtoken'
 import expressJwt from 'express-jwt'
 import compose from 'composable-middleware'
-import Auth from './model'
+import Auth from '../api/user/model'
 import * as Utils from '../components/utils'
 import {EntityNotFoundError, PermissonError, getErrorStatusCode} from '../components/errors'
 

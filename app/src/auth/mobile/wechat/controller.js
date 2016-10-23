@@ -1,7 +1,7 @@
 import request from 'request'
 import passport from 'passport'
 import {signToken} from '../../service'
-import Auth from '../../model'
+import Auth from '../../../api/user/model'
 import * as Utils from '../../../components/utils'
 import config from '../../../config'
 

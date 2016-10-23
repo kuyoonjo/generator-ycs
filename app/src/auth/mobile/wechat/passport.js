@@ -1,7 +1,7 @@
 import passport from 'passport'
 import CustomStrategy from 'passport-custom'
 import * as controller from './controller'
-import Auth from '../../model'
+import Auth from '../../../api/user/model'
 
 export function setup() {
   passport.use('wechat', new CustomStrategy(

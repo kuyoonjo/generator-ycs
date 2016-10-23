@@ -5,7 +5,7 @@ import * as controller from './controller'
 import * as auth from '../../auth/service'
 
 const router = new Router()
-export const URI = 'users'
+export const URI = '/api/users'
 
 router.get(
     '/',
@@ -34,7 +34,7 @@ router.put(
 router.patch(
     '/:id',
     auth.hasRole('super'),
-    controller.update
+    controller.updatePartial
 )
 
 router.delete(
