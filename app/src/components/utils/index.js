@@ -104,7 +104,11 @@ export function patchUpdates(updates) {
         return {}
       }
       if (_.isArray(objValue)) {
-        return _.compact(_.merge(objValue, srcValue))
+        let merged = []
+        for(let i = 0; i < srcValue.length; i ++) {
+          merged[i] = _.isEmpty(srcValue[i]) && srcValue[i] !== null ? objValue[i] : srcValue[i]
+        }
+        return merged.filter(x => x !== null)
       }
     })
     return Promise.resolve(updated)
