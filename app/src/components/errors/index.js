@@ -23,7 +23,7 @@ const Errors = [
   },
   {
     code: 422,
-    types: ['ValidationError', 'SyntaxError']
+    types: ['ValidationError', 'SyntaxError', 'FileUploadError']
   }
 ]
 
@@ -59,5 +59,12 @@ export class ValidationError extends Error {
   constructor(message) {
     super(message)
     this.name = 'ValidationError'
+  }
+}
+
+export class FileUploadError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = 'FileUploadError'
   }
 }

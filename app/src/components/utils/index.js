@@ -1,7 +1,7 @@
 'use strict'
 
 import _ from 'lodash'
-import {EntityNotFoundError, getErrorStatusCode} from '../errors'
+import { EntityNotFoundError, FileUploadError, getErrorStatusCode } from '../errors'
 
 //
 // Creating an entity with data from req.body
@@ -27,6 +27,8 @@ export function saveEntity() {
 //
 export function attachFile(req, field) {
   return function (entity) {
+    if (req.body[field])
+      throw new FileUploadError(`Field '${field}' is not a valid file`)
     if (!req.files || !req.files[field] || !req.files[field].length) {
       return Promise.resolve(entity)
     }
@@ -39,6 +41,8 @@ export function attachFile(req, field) {
 //
 export function attachFiles(req, field) {
   return function (entity) {
+    if (req.body[field])
+      throw new FileUploadError(`Field '${field}' is not a valid file array`)
     if (!req.files || !req.files[field] || !req.files[field].length) {
       return Promise.resolve(entity)
     }
@@ -170,7 +174,7 @@ export function paginate(model, req, filters, options) {
   }
 
   if (options) {
-    _options = _.merge(_.options, options)
+    _options = _.merge(_options, options)
   }
 
   if (req.query._filters) {
