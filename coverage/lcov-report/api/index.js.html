@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for api/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">api/</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+<span class="cstat-no" title="statement not covered" >var yeoman = require('yeoman-generator');</span>
+<span class="cstat-no" title="statement not covered" >var chalk = require('chalk');</span>
+<span class="cstat-no" title="statement not covered" >var yosay = require('yosay');</span>
+<span class="cstat-no" title="statement not covered" >var pluralize = require('pluralize');</span>
+<span class="cstat-no" title="statement not covered" >var fs = require('fs');</span>
+<span class="cstat-no" title="statement not covered" >var _ = require('lodash');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = yeoman.Base.extend({</span>
+  constructor: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    yeoman.Base.apply(this, arguments);</span>
+<span class="cstat-no" title="statement not covered" >    if (!this.config.get('appName')) {</span>
+<span class="cstat-no" title="statement not covered" >      this.log(chalk.yellow('App dir not found!'));</span>
+<span class="cstat-no" title="statement not covered" >      process.exit(0);</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.argument('apiName', {</span>
+      type: String,
+      required: false
+    });
+<span class="cstat-no" title="statement not covered" >    this.option('endpoint');</span>
+<span class="cstat-no" title="statement not covered" >    this.option('file');</span>
+<span class="cstat-no" title="statement not covered" >    this.option('image');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.apiName) {</span>
+<span class="cstat-no" title="statement not covered" >      this.endpoint = this.options.endpoint || '/api/' + pluralize(this.apiName);</span>
+<span class="cstat-no" title="statement not covered" >      this.withFile = this.options.file;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (this.options.image) {</span>
+<span class="cstat-no" title="statement not covered" >        this.withFile = this.options.file || true;</span>
+<span class="cstat-no" title="statement not covered" >        this.isImage = this.options.image;</span>
+      }
+    }
+  },
+&nbsp;
+  prompting: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    if (!this.apiName) {</span>
+<span class="cstat-no" title="statement not covered" >      var prompts = [</span>
+        {
+          type: 'input',
+          name: 'apiName',
+          message: 'API Name:',
+          default: 'thing'
+        },
+        {
+          type: 'input',
+          name: 'endpoint',
+          message: 'endpoint:',
+          default: <span class="fstat-no" title="function not covered" >function (response) {</span>
+<span class="cstat-no" title="statement not covered" >            return '/api/' + pluralize(response.apiName);</span>
+          }
+        },
+        {
+          type: 'confirm',
+          name: 'withFile',
+          message: 'with file upload:',
+          default: false
+        },
+        {
+          when: <span class="fstat-no" title="function not covered" >function (response) {</span>
+<span class="cstat-no" title="statement not covered" >            return response.withFile;</span>
+          },
+          type: 'confirm',
+          name: 'isImage',
+          message: 'is type image:',
+          default: false
+        }
+      ];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return this.prompt(prompts).then(<span class="fstat-no" title="function not covered" >function (props) {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.apiName = props.apiName;</span>
+<span class="cstat-no" title="statement not covered" >        this.endpoint = props.endpoint;</span>
+<span class="cstat-no" title="statement not covered" >        this.withFile = props.withFile;</span>
+<span class="cstat-no" title="statement not covered" >        this.isImage = props.isImage;</span>
+      }.bind(this));
+    }
+  },
+&nbsp;
+  writing: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    var dest = this.destinationPath('src/api/' + this.apiName);</span>
+<span class="cstat-no" title="statement not covered" >    if (fs.existsSync(dest)) {</span>
+<span class="cstat-no" title="statement not covered" >      return this.log(chalk.yellow(`API ${this.apiName} already exists`));</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var tpl;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.isImage) {</span>
+<span class="cstat-no" title="statement not covered" >      tpl = this.templatePath('image');</span>
+    } else <span class="cstat-no" title="statement not covered" >if (this.withFile) {</span>
+<span class="cstat-no" title="statement not covered" >      tpl = this.templatePath('file');</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      tpl = this.templatePath('simple');</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.className = _.capitalize(_.camelCase(this.apiName));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.fs.copyTpl(tpl, dest, {</span>
+      className: this.className,
+      classNamePlural: pluralize(this.className),
+      apiName: this.apiName,
+      endpoint: this.endpoint
+    });
+  }
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 03 2016 13:36:09 GMT+0800 (CST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
