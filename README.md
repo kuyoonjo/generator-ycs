@@ -1,5 +1,5 @@
 # generator-ycs 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url][![Coverage Status](https://coveralls.io/repos/github/kuyoonjo/generator-ycs/badge.svg?branch=master)](https://coveralls.io/github/kuyoonjo/generator-ycs?branch=master)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > An Express Restful API Server
 
 ## Dependencies
